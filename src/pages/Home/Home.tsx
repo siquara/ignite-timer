@@ -9,23 +9,22 @@ import {
   TaskInput,
 } from "./styles";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { NewCycleFormData } from "./types";
+import { newCycleFormValidationSchema } from "./shemas";
 
-const newCycleFormValidationSchema = z.object({
-  task: z.string().min(1, "A tarefa deve ter pelo menos 1 caractere"),
-  minutesAmount: z
-    .number()
-    .min(5, "O tempo mínimo é de 5 minutos")
-    .max(60, "O tempo máximo é de 60 minutos"),
-});
 export function Home() {
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: "",
+      minutesAmount: 0,
+    },
   });
 
-  function handleCreateNewCycle(data: any) {
+  function handleCreateNewCycle(data: NewCycleFormData) {
     console.log(data);
+    reset();
   }
 
   const task = watch("task");
