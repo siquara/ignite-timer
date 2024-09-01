@@ -1,5 +1,7 @@
 import * as z from "zod";
 
+export type NewCycleFormData = z.infer<typeof newCycleFormValidationSchema>;
+
 export const newCycleFormValidationSchema = z.object({
   task: z.string().min(1, "A tarefa deve ter pelo menos 1 caractere"),
   minutesAmount: z
