@@ -26,7 +26,3 @@ export interface CyclesContextType {
   interruptCurrentCycle: () => void;
 }
 
-export interface CyclesState {
-  cycles: Cycle[];
-  activeCycleId: string | null;
-}
