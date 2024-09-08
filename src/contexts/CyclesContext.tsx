@@ -6,8 +6,6 @@ import {
   CyclesContextType,
 } from "./types";
 import { cyclesRecucers } from "../reducers/cycles/reducer";
-import { ActionTypes } from "../reducers/cycles/types";
-import { add } from "date-fns";
 import { addNewCycleAction, interruptNewCycleAction, markCurrentCycleAsFinishedAction } from "../reducers/cycles/actions";
 
 export const CyclesContext = createContext({} as CyclesContextType);
