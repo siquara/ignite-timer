@@ -5,8 +5,10 @@ import {
   CyclesContextProviderProps,
   CyclesContextType,
 } from "./types";
-import { cyclesRecucers } from "../reducers/cycles";
-import { ActionTypes } from "../reducers/types";
+import { cyclesRecucers } from "../reducers/cycles/reducer";
+import { ActionTypes } from "../reducers/cycles/types";
+import { add } from "date-fns";
+import { addNewCycleAction, interruptNewCycleAction, markCurrentCycleAsFinishedAction } from "../reducers/cycles/actions";
 
 export const CyclesContext = createContext({} as CyclesContextType);
 
@@ -29,12 +31,7 @@ export function CyclesContextProvider({
   }
 
   function markCurrentCycleAsFinished() {
-    dispatch({
-      type: ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED,
-      payload: {
-        activeCycleId,
-      },
-    });
+    dispatch(markCurrentCycleAsFinishedAction());
   }
 
   function createNewCycle(data: CreateCycleData) {
@@ -45,22 +42,12 @@ export function CyclesContextProvider({
       startDate: new Date(),
     };
 
-    dispatch({
-      type: ActionTypes.ADD_NEW_CYCLE,
-      payload: {
-        newCycle,
-      },
-    });
+    dispatch(addNewCycleAction(newCycle));
     setAmountSecondsPassed(0);
   }
 
   function interruptCurrentCycle() {
-    dispatch({
-      type: ActionTypes.INTERRUPT_NEW_CYCLE,
-      payload: {
-        activeCycleId,
-      },
-    });
+    dispatch(interruptNewCycleAction());
   }
 
   return (

@@ -1,4 +1,4 @@
-import { Cycle } from "../contexts/types";
+import { Cycle } from "../../contexts/types";
 
 export interface CyclesState {
   cycles: Cycle[];
