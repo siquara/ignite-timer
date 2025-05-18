@@ -13,7 +13,6 @@ O **Ignite Timer** é um projeto desenvolvido no curso da RocketSeat que impleme
 ## Tecnologias Utilizadas
 [![My Skills](https://skillicons.dev/icons?i=typescript,react,styledcomponents,git,github)](https://github.com/siquara)
 
-
 ## Instalação
 
 Para rodar o Ignite Timer em sua máquina local, siga os passos abaixo:
